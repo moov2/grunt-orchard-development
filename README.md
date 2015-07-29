@@ -21,3 +21,7 @@ grunt.loadNpmTasks('grunt-orchard-shell');
 ## Status
 
 Currently this project and the Orchard shell project are under development.
+
+## Release History
+
+See [CHANGELOG](https://github.com/moov2/grunt-orchard-shell/blob/master/CHANGELOG.md).
