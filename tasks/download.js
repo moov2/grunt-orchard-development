@@ -201,7 +201,7 @@ module.exports = function(grunt) {
             });
         };
 
-        var orchardDownload = helpers.getOrchardDownload(options.version);
+        var orchardDownload = (options.url) ? { version: options.version, url: options.url } : helpers.getOrchardDownload(options.version);
 
         if (!orchardDownload) {
             grunt.fail.fatal('Unrecognised Orchard version number.');
