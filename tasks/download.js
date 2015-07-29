@@ -111,7 +111,7 @@ module.exports = function(grunt) {
         /**
          * Deletes the downloaded zip & temporary directory.
          */
-        var cleanUp = function () {
+        var cleanUp = function (onComplete) {
             grunt.file.delete(options.tempDir, { force: true });
 
             fs.exists(options.downloadDestination, function (exists) {
@@ -119,7 +119,9 @@ module.exports = function(grunt) {
                     fs.unlinkSync(options.downloadDestination);
                 }
 
-                done();
+                if (onComplete) {
+                    onComplete();
+                }
             });
         };
 
@@ -197,26 +199,33 @@ module.exports = function(grunt) {
                 currentDirName = (contents.length === 1) ? path.join(options.tempDir, contents[0]) : options.tempDir;
 
             mv(currentDirName, options.localDir, {mkdirp: true}, function() {
-                cleanUp();
+                cleanUp(done);
             });
         };
 
-        var orchardDownload = (options.url) ? { version: options.version, url: options.url } : helpers.getOrchardDownload(options.version);
+        /**
+         * Kicks off the task of downloading Orchard (if not already downloaded).
+         */
+        var begin = function () {
+            var orchardDownload = (options.url) ? { version: options.version, url: options.url } : helpers.getOrchardDownload(options.version);
 
-        if (!orchardDownload) {
-            grunt.fail.fatal('Unrecognised Orchard version number.');
-            // TODO: Add information on how to setup custom version of Orchard.
-        }
-
-        // check if the Orchard version has already been setup.
-        fs.exists(options.localDir, function (exists) {
-            if (exists) {
-                done();
-                return;
+            if (!orchardDownload) {
+                grunt.fail.fatal('Unrecognised Orchard version number.');
+                // TODO: Add information on how to setup custom version of Orchard.
             }
 
-            // Orchard hasn't been setup yet, it must be downloaded first.
-            download(orchardDownload);
-        });
+            // check if the Orchard version has already been setup.
+            fs.exists(options.localDir, function (exists) {
+                if (exists) {
+                    done();
+                    return;
+                }
+
+                // Orchard hasn't been setup yet, it must be downloaded first.
+                download(orchardDownload);
+            });
+        };
+
+        cleanUp(begin);
     });
 };
