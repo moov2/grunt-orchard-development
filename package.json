@@ -1,0 +1,14 @@
+{
+  "name": "grunt-orchard-shell",
+  "version": "0.1.0",
+  "description": "Grunt tasks that assist Orchard shell.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moov2/grunt-orchard-shell.git"
+  },
+  "author": "Moov2",
+  "bugs": {
+    "url": "https://github.com/moov2/grunt-orchard-shell/issues"
+  },
+  "homepage": "https://github.com/moov2/grunt-orchard-shell#readme"
+}
