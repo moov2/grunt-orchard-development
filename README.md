@@ -17,3 +17,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('grunt-orchard-shell');
 ```
+
+## Status
+
+Currently this project and the Orchard shell project are under development.
