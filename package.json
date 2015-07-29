@@ -10,6 +10,7 @@
   "bugs": {
     "url": "https://github.com/moov2/grunt-orchard-shell/issues"
   },
+  "license": "MIT",
   "homepage": "https://github.com/moov2/grunt-orchard-shell#readme",
   "dependencies": {
     "async": "1.4.0",
