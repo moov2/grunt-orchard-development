@@ -112,7 +112,7 @@ module.exports = function(grunt) {
          * Deletes the downloaded zip & temporary directory.
          */
         var cleanUp = function () {
-            fs.rmdir(options.tempDir);
+            grunt.file.delete(options.tempDir, { force: true });
 
             fs.exists(options.downloadDestination, function (exists) {
                 if (exists) {
