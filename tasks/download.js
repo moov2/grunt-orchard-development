@@ -82,6 +82,21 @@ module.exports = function(grunt) {
             }
 
             return _.findWhere(orchardDownloads, { version: version });
+        },
+
+        /**
+         * Writes data to a file, ensuring that the containing directory exists.
+         */
+        writeFile: function (url, content) {
+            var dirName = path.dirname(url);
+
+            if (!fs.existsSync(dirName)) {
+                fs.mkdirSync(dirName);
+            }
+
+            fs.writeFileSync(url, content, {
+                mode: 0777
+            });
         }
     };
 
@@ -171,9 +186,7 @@ module.exports = function(grunt) {
                     if (filename.substr(filename.length - 1, 1) === '/') {
                         fs.mkdirSync(dest);
                     } else {
-                        fs.writeFileSync(dest, content, {
-                            mode: 0777
-                        });
+                        helpers.writeFile(dest, content);
                     }
                 });
 
