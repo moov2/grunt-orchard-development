@@ -1,3 +1,7 @@
+### 0.2.1 (August 12th 2015)
+
+* `buildThemes` task will fail if the theme build fails.
+
 ### 0.2.0 (July 29th 2015)
 
 * Added `url` option to `orchardDownload` grunt task.
