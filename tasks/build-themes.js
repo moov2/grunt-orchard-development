@@ -85,6 +85,11 @@ module.exports = function(grunt) {
                     cwd: path.join(options.themes, themes[count])
                 }
             }, function(error, result, code) {
+                if (error) {
+                    grunt.fail.fatal('Failed to build theme ' + themes[count] + '.');
+                    return;
+                }
+                
                 helpers.deleteDirectory(path.join(options.dest, themes[count]));
                 copyTheme();
             });
