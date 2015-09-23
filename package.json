@@ -1,17 +1,17 @@
 {
-  "name": "grunt-orchard-shell",
+  "name": "grunt-orchard-development",
   "version": "0.2.1",
-  "description": "Grunt tasks that assist Orchard shell.",
+  "description": "Grunt tasks that assist Orchard development.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/moov2/grunt-orchard-shell.git"
+    "url": "git+https://github.com/moov2/grunt-orchard-development.git"
   },
   "author": "Moov2",
   "bugs": {
-    "url": "https://github.com/moov2/grunt-orchard-shell/issues"
+    "url": "https://github.com/moov2/grunt-orchard-development/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/moov2/grunt-orchard-shell#readme",
+  "homepage": "https://github.com/moov2/grunt-orchard-development#readme",
   "dependencies": {
     "async": "1.4.0",
     "fs": "0.0.2",
