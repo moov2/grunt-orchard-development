@@ -1,3 +1,7 @@
+### 0.3.1 (October 1st 2015)
+
+* Added missing 0.3.0 changelog.
+
 ### 0.3.0 (October 1st 2015)
 
 * Added a task to remove unused Orchard modules.
