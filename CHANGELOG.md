@@ -1,3 +1,8 @@
+### 0.3.0 (October 1st 2015)
+
+* Added a task to remove unused Orchard modules.
+* Fixed an issue when the meaning of `latest` changes, removed this feature. Always specify your Orchard version.
+
 ### 0.2.1 (August 12th 2015)
 
 * `buildThemes` task will fail if the theme build fails.
