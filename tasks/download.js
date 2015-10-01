@@ -76,11 +76,6 @@ module.exports = function(grunt) {
          * Returns the download URL for Orchard source code.
          */
         getOrchardDownload: function (version) {
-            // return the latest version in the orchard versio.
-            if (version === 'latest') {
-                return _.first(orchardDownloads);
-            }
-
             return _.findWhere(orchardDownloads, { version: version });
         },
 
