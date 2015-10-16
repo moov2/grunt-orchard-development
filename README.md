@@ -1,6 +1,6 @@
 # grunt-orchard-development
 
-Provides various grunt tasks to assist our [Orchard development](https://github.com/moov2/grunt-orchard-development) project used for development on [Orchard CMS](http://www.orchardproject.net/).
+Provides various grunt tasks to assist our [Orchard development](https://github.com/moov2/orchard-development) project used for development on [Orchard CMS](http://www.orchardproject.net/).
 
 ## Getting Started
 
