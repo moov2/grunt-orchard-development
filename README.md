@@ -21,7 +21,3 @@ grunt.loadNpmTasks('grunt-orchard-development');
 ## Status
 
 Currently this project and the Orchard development project are under development.
-
-## Release History
-
-See [CHANGELOG](https://github.com/moov2/grunt-orchard-development/blob/master/CHANGELOG.md).
