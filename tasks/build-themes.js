@@ -59,6 +59,7 @@ module.exports = function(grunt) {
         }
 
         options.themes = options.themes || './themes';
+        options.task = options.task || 'dist';
 
         // grunt task should be marked as async.
         var done = this.async(),
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
 
             var child = grunt.util.spawn({
                 cmd: 'npm',
-                args: ['run', 'dist'],
+                args: ['run', options.task],
                 opts: {
                     cwd: path.join(options.themes, themes[count])
                 }
