@@ -181,7 +181,9 @@ module.exports = function(grunt) {
                     dest = path.join(options.tempDir, filename);
 
                     if (filename.substr(filename.length - 1, 1) === '/') {
-                        fs.mkdirSync(dest);
+                        if (!fs.existsSync(dest)) {
+                            fs.mkdirSync(dest);
+                        }
                     } else {
                         helpers.writeFile(dest, content);
                     }
