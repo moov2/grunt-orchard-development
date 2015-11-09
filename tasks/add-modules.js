@@ -107,8 +107,13 @@ module.exports = function(grunt) {
                 return;
             }
 
-            var moduleName = modules[count],
-                moduleGuid;
+            var moduleName = modules[count];
+            
+            // ignore directory when module doesn't contain .csproj file.
+            if (!fs.existsSync(path.join(options.modules, moduleName, moduleName + '.csproj'))) {
+                addNextModule();
+                return;
+            }
 
             helpers.getProjectGuid(path.join(options.modules, moduleName, moduleName + '.csproj'), function (moduleGuid) {
                 // module already exists in the solution, move onto the next one.
