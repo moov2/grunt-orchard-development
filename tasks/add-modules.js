@@ -122,10 +122,10 @@ module.exports = function(grunt) {
                     return;
                 }
 
-                var projectReference = 'EndProject\r\nProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "' + moduleName + '", "Orchard.Web\\Modules\\' + moduleName + '\\' + moduleName + '.csproj", "' + moduleGuid + '"\r\n';
+                var projectReference = '\r\nProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "' + moduleName + '", "Orchard.Web\\Modules\\' + moduleName + '\\' + moduleName + '.csproj", "' + moduleGuid + '"\r\nEndProject\r\n';
                 var projectConfiguationPlatforms = '\t\t' + moduleGuid + '.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.Build.0 = Release|Any CPU\r\n';
 
-                solutionFileContents = _s.insert(solutionFileContents, solutionFileContents.lastIndexOf('EndProject\r\n'), projectReference)
+                solutionFileContents = _s.insert(solutionFileContents, solutionFileContents.lastIndexOf('EndProject') + 10, projectReference)
                 
                 var sectionStart = solutionFileContents.indexOf("GlobalSection(ProjectConfigurationPlatforms)");
                 var sectionEnd = sectionStart + solutionFileContents.substring(sectionStart).indexOf('EndGlobalSection');
