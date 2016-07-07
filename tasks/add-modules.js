@@ -123,10 +123,18 @@ module.exports = function(grunt) {
                 }
 
                 var projectReference = 'EndProject\r\nProject("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "' + moduleName + '", "Orchard.Web\\Modules\\' + moduleName + '\\' + moduleName + '.csproj", "' + moduleGuid + '"\r\n';
-                var projectConfiguationPlatforms = 'GlobalSection(ProjectConfigurationPlatforms) = postSolution\r\n\t\t' + moduleGuid + '.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.Build.0 = Release|Any CPU\r\n';
+                var projectConfiguationPlatforms = '\t\t' + moduleGuid + '.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.Build.0 = Release|Any CPU\r\n';
 
-                solutionFileContents = _s.insert(solutionFileContents, solutionFileContents.lastIndexOf('EndProject\r\n'), projectReference).replace('GlobalSection(ProjectConfigurationPlatforms) = postSolution\r\n', projectConfiguationPlatforms);
-                solutionFileContents = _s.insert(solutionFileContents, solutionFileContents.lastIndexOf("EndGlobalSection"), '\t' + moduleGuid + ' = {' + SOLUTION_DIRECTORY_MODULES + '}\r\n\t');
+                solutionFileContents = _s.insert(solutionFileContents, solutionFileContents.lastIndexOf('EndProject\r\n'), projectReference)
+                
+                var sectionStart = solutionFileContents.indexOf("GlobalSection(ProjectConfigurationPlatforms)");
+                var sectionEnd = sectionStart + solutionFileContents.substring(sectionStart).indexOf('EndGlobalSection');
+
+                solutionFileContents = _s.insert(solutionFileContents, sectionEnd, projectConfiguationPlatforms);
+
+                sectionStart = solutionFileContents.indexOf("GlobalSection(NestedProjects)");
+                sectionEnd = sectionStart + solutionFileContents.substring(sectionStart).indexOf('EndGlobalSection');
+                solutionFileContents = _s.insert(solutionFileContents, sectionEnd, '\t' + moduleGuid + ' = {' + SOLUTION_DIRECTORY_MODULES + '}\r\n\t');
 
                 isDirty = true;
 
