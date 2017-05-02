@@ -1,6 +1,6 @@
 {
   "name": "grunt-orchard-development",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Grunt tasks that assist Orchard development.",
   "repository": {
     "type": "git",
