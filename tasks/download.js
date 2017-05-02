@@ -17,6 +17,7 @@ module.exports = function(grunt) {
      * Collection of URLs to Orchard source code downloads.
      */
     var orchardDownloads = [
+        { version: '1.10.2', url: 'https://github.com/OrchardCMS/Orchard/archive/1.10.2.zip' },
         { version: '1.10.1', url: 'https://github.com/OrchardCMS/Orchard/archive/1.10.1.zip' },
         { version: '1.10', url: 'https://github.com/OrchardCMS/Orchard/archive/1.10.zip' },
         { version: '1.9.3', url: 'https://github.com/OrchardCMS/Orchard/archive/1.9.3.zip' },
