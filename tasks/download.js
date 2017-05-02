@@ -6,7 +6,6 @@ var fs = require('fs');
 var path = require('path');
 var async = require('async');
 var request = require('request');
-var _ = require('lodash');
 var mv = require('mv');
 var JSZip = require('jszip');
 
@@ -81,7 +80,7 @@ module.exports = function(grunt) {
          * Returns the download URL for Orchard source code.
          */
         getOrchardDownload: function (version) {
-            return _.findWhere(orchardDownloads, { version: version });
+            return orchardDownloads.find(item => item.version == version);
         },
 
         /**
