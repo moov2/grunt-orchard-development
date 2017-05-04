@@ -4,7 +4,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var async = require('async');
 var mv = require('mv');
 var xml2js = require('xml2js')
 var _s = require('underscore.string');
@@ -108,7 +107,7 @@ module.exports = function(grunt) {
             }
 
             var moduleName = modules[count];
-            
+
             // ignore directory when module doesn't contain .csproj file.
             if (!fs.existsSync(path.join(options.modules, moduleName, moduleName + '.csproj'))) {
                 addNextModule();
@@ -126,7 +125,7 @@ module.exports = function(grunt) {
                 var projectConfiguationPlatforms = '\t\t' + moduleGuid + '.Debug|Any CPU.ActiveCfg = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Debug|Any CPU.Build.0 = Debug|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.ActiveCfg = Release|Any CPU\r\n\t\t' + moduleGuid + '.Release|Any CPU.Build.0 = Release|Any CPU\r\n';
 
                 solutionFileContents = _s.insert(solutionFileContents, solutionFileContents.lastIndexOf('EndProject') + 10, projectReference)
-                
+
                 var sectionStart = solutionFileContents.indexOf("GlobalSection(ProjectConfigurationPlatforms)");
                 var sectionEnd = sectionStart + solutionFileContents.substring(sectionStart).indexOf('EndGlobalSection');
 

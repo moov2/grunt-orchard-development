@@ -4,10 +4,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var async = require('async');
-var mv = require('mv');
 var xml2js = require('xml2js')
-var _s = require('underscore.string');
 
 'use strict'
 
@@ -18,7 +15,7 @@ module.exports = function (grunt) {
         SOLUTION_FILE_NAME = 'Orchard.sln',
         SOLUTION_MODULES_DIRECTORY = SOLUTION_DIRECTORY_CONTAINER + '/Orchard.Web/Modules',
         DEFAULT_MODULES = [];
-    
+
     var helpers = {
         /**
          * Returns directories inside the directory associated to the provided path.
@@ -52,21 +49,21 @@ module.exports = function (grunt) {
                 }
             });
         }
-        
+
     };
-    
+
     grunt.registerTask('removeModulesFromOrchard', 'Removes specified modules from the local Orchard install.', function () {
         /**
          * Retrieves defined options.
          */
         var options = this.options();
         grunt.verbose.writeflags(options, 'Options');
-    
+
         // grunt task must specify the location of Orchard.
         if (!options.orchard) {
             grunt.fail.fatal('Must specify `orchard`.');
         }
-        
+
         options.modules = options.modules || DEFAULT_MODULES;
 
         // grunt task should be marked as async.
@@ -121,8 +118,8 @@ module.exports = function (grunt) {
             var moduleName = removeModules[count],
                 moduleDir =  path.join(options.orchard, SOLUTION_MODULES_DIRECTORY, moduleName),
                 moduleProject = path.join(moduleDir, moduleName + '.csproj'),
-                moduleGuid;                
-            
+                moduleGuid;
+
             helpers.getProjectGuid(moduleProject, function (moduleGuid) {
                if (grunt.file.exists(moduleDir)) {
                     grunt.file.delete(moduleDir);
@@ -158,7 +155,7 @@ module.exports = function (grunt) {
                  */
                 solutionFileContents = solutionFileContents.replace(new RegExp(projectReferencePatternString, 'g'), '');
                 solutionFileContents = solutionFileContents.replace(new RegExp(postProjectProjectSectionPattern, 'g'), '');
-                solutionFileContents = solutionFileContents.replace(new RegExp(projectConfigurationPlatformsPattern, 'g'), '');                
+                solutionFileContents = solutionFileContents.replace(new RegExp(projectConfigurationPlatformsPattern, 'g'), '');
 
 
                 isDirty = true;
@@ -168,7 +165,7 @@ module.exports = function (grunt) {
                 if (grunt.file.exists(moduleDir)) {
                     grunt.file.delete(moduleDir);
                 }
-                
+
                 removeNextModule();
            });
         };

@@ -4,7 +4,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var async = require('async');
 var request = require('request');
 var _ = require('lodash');
 var mv = require('mv');

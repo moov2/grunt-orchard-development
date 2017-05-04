@@ -4,7 +4,6 @@
 
 var fs = require('fs');
 var path = require('path');
-var async = require('async');
 var mv = require('mv');
 
 'use strict';
@@ -90,7 +89,7 @@ module.exports = function(grunt) {
                     grunt.fail.fatal('Failed to build theme ' + themes[count] + '.');
                     return;
                 }
-                
+
                 helpers.deleteDirectory(path.join(options.dest, themes[count]));
                 copyTheme();
             });
